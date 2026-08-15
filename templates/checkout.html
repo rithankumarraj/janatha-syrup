@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+
+<section class="page-header page-header-sm">
+    <div class="container">
+        <h1 class="page-title">Secure <span class="text-gradient">Checkout</span></h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'cart' %}">Cart</a></li>
+                <li class="breadcrumb-item active">Checkout</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<section class="section-padding">
+    <div class="container">
+        <form method="POST" id="checkoutForm">
+            {% csrf_token %}
+            <div class="row g-4">
+                <!-- Checkout Form -->
+                <div class="col-lg-7">
+                    <div class="checkout-card">
+                        <h4 class="checkout-section-title">
+                            <i class="bi bi-geo-alt me-2"></i>Delivery Details
+                        </h4>
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label">Full Name *</label>
+                                {{ form.full_name }}
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Email *</label>
+                                {{ form.email }}
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Phone *</label>
+                                {{ form.phone }}
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Delivery Address *</label>
+                                {{ form.address }}
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">City *</label>
+                                {{ form.city }}
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">State *</label>
+                                {{ form.state }}
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">PIN Code *</label>
+                                {{ form.pincode }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checkout-card mt-4">
+                        <h4 class="checkout-section-title">
+                            <i class="bi bi-credit-card me-2"></i>Payment Method
+                        </h4>
+                        <div class="mb-3">
+                            {{ form.payment_method }}
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Order Notes (optional)</label>
+                            {{ form.notes }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="col-lg-5">
+                    <div class="order-summary-card sticky-summary">
+                        <h4 class="summary-title">Order Summary</h4>
+                        <div class="checkout-items">
+                            {% for item in cart_items %}
+                            <div class="checkout-item d-flex align-items-center gap-3 mb-3">
+                                <div class="checkout-item-image">
+                                    {% if item.product.image %}
+                                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                    {% else %}
+                                    <img src="{% static 'images/products/nannari-hero.png' %}" alt="{{ item.product.name }}">
+                                    {% endif %}
+                                    <span class="checkout-qty-badge">{{ item.quantity }}</span>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-0">{{ item.product.name }}</h6>
+                                    <small class="text-muted">{{ item.product.get_size_display }}</small>
+                                </div>
+                                <span class="fw-bold">₹{{ item.subtotal|floatformat:2 }}</span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <hr>
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span>₹{{ total|floatformat:2 }}</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <span>{% if shipping == 0 %}<span class="text-success">FREE</span>{% else %}₹{{ shipping }}{% endif %}</span>
+                        </div>
+                        <hr>
+                        <div class="summary-row summary-total">
+                            <span>Total</span>
+                            <span>₹{{ grand_total|floatformat:2 }}</span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary-janatha btn-lg w-100 mt-4">
+                            <i class="bi bi-lock-fill me-2"></i>Place Order — ₹{{ grand_total|floatformat:2 }}
+                        </button>
+
+                        <div class="text-center mt-3">
+                            <small class="text-muted">
+                                <i class="bi bi-shield-check me-1"></i>
+                                Your payment information is secure
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

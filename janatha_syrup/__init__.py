@@ -1,0 +1,1 @@
+# Janatha Syrup Django Project

@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <h1 class="page-title">Our <span class="text-gradient">Story</span></h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                <li class="breadcrumb-item active">About</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Founder & Heritage Section -->
+<section class="section-padding founder-section">
+    <div class="container">
+        <div class="founder-card shadow-lg" data-animate="fade-up">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5 text-center" data-animate="fade-right">
+                    <div class="founder-image-wrapper">
+                        <img src="{% static 'images/dr-pv-varadarajan.jpg' %}" alt="Dr. P.V. Varadarajan - Janatha Food Products" class="img-fluid founder-photo">
+                        <div class="founder-badge">
+                            <span class="founder-name">Dr. P.V. Varadarajan</span>
+                            <span class="founder-title">Founder & Siddha Researcher (R.I.M.P)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7" data-animate="fade-left">
+                    <div class="founder-content">
+                        <span class="section-badge">Janatha Food Products</span>
+                        <h2 class="about-title">The Visionary Behind <span class="text-gradient">Janatha</span></h2>
+                        <h4 class="founder-subtitle text-muted mb-3">About Dr. P.V. Varadarajan</h4>
+                        
+                        <p class="about-text">
+                            In <strong>1960</strong>, <strong>Dr. P.V. Varadarajan</strong> researched on Siddha Medicines and succeeded in earning his <strong>R.I.M.P Doctorate</strong> from the Tamil Nadu Government.
+                        </p>
+                        <p class="about-text">
+                            He was continuously doing his research in the <strong>Sarasaparilla (Nannari)</strong> extract. Through dedicated research, he discovered that Nannari is a delicious herbal root whose pleasant extract delivers incredible taste along with rich medicinal benefits.
+                        </p>
+                        <p class="about-text">
+                            In <strong>1961</strong>, he founded this venture along with his two brothers, <strong>P.V. Muthusamy</strong> and <strong>R.V. Ramachandran</strong>, under the name <strong>"Janatha"</strong>. Due to uncompromised product quality, hard work, matchless efforts, sincerity, and God’s grace, Janatha has grown to become one of the largest suppliers of Nannari Syrup, Fruit Juices, and authentic food products across Tamil Nadu and throughout the country.
+                        </p>
+
+                        <!-- Founder Highlights / Badges -->
+                        <div class="row g-3 mt-3">
+                            <div class="col-sm-6">
+                                <div class="founder-highlight-card">
+                                    <div class="highlight-icon"><i class="bi bi-award-fill"></i></div>
+                                    <div class="highlight-body">
+                                        <h5 class="highlight-title">Awards & Honors</h5>
+                                        <p class="highlight-text">Recipient of prestigious awards and mementos across leading exhibitions and trade fairs.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="founder-highlight-card">
+                                    <div class="highlight-icon"><i class="bi bi-patch-check-fill"></i></div>
+                                    <div class="highlight-body">
+                                        <h5 class="highlight-title">Licensed & Certified</h5>
+                                        <p class="highlight-text">Fruit Product Order (FPO) licence from the Ministry of Food Processing Industries.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mission & Values -->
+<section class="section-padding bg-light-gradient">
+    <div class="container">
+        <div class="section-header text-center" data-animate="fade-up">
+            <span class="section-badge">Our Values</span>
+            <h2 class="section-title">What We <span class="text-gradient">Stand For</span></h2>
+        </div>
+
+        <div class="row g-4 mt-4">
+            <div class="col-lg-4 col-md-6" data-animate="fade-up">
+                <div class="value-card">
+                    <div class="value-icon"><i class="bi bi-heart-fill"></i></div>
+                    <h4>Passion for Quality</h4>
+                    <p>Every batch is crafted with meticulous attention to detail, ensuring consistent taste and quality in every bottle.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6" data-animate="fade-up" data-delay="2">
+                <div class="value-card">
+                    <div class="value-icon"><i class="bi bi-tree-fill"></i></div>
+                    <h4>Natural Ingredients</h4>
+                    <p>We source the finest natural extracts and flavors, staying true to our roots and the recipes passed down through generations.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6" data-animate="fade-up" data-delay="3">
+                <div class="value-card">
+                    <div class="value-icon"><i class="bi bi-people-fill"></i></div>
+                    <h4>Customer First</h4>
+                    <p>Our customers are family. We listen, adapt, and continuously strive to exceed your expectations with every product.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row g-4 text-center">
+            <div class="col-lg-3 col-6" data-animate="fade-up">
+                <div class="stat-card">
+                    <div class="stat-number" data-count="50">0</div>
+                    <div class="stat-suffix">+ Years</div>
+                    <div class="stat-label">Of Legacy</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6" data-animate="fade-up" data-delay="2">
+                <div class="stat-card">
+                    <div class="stat-number" data-count="10">0</div>
+                    <div class="stat-suffix">Lakh+</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6" data-animate="fade-up" data-delay="3">
+                <div class="stat-card">
+                    <div class="stat-number" data-count="15">0</div>
+                    <div class="stat-suffix">+</div>
+                    <div class="stat-label">Product Variants</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6" data-animate="fade-up" data-delay="4">
+                <div class="stat-card">
+                    <div class="stat-number" data-count="500">0</div>
+                    <div class="stat-suffix">+</div>
+                    <div class="stat-label">Cities Served</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

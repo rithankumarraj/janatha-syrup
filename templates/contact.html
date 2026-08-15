@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+
+<section class="page-header page-header-sm">
+    <div class="container">
+        <h1 class="page-title">Contact <span class="text-gradient">Us</span></h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                <li class="breadcrumb-item active">Contact</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<section class="section-padding">
+    <div class="container">
+        <div class="row g-5">
+            <!-- Contact Info -->
+            <div class="col-lg-5" data-animate="fade-right">
+                <h2 class="mb-4">Get In <span class="text-gradient">Touch</span></h2>
+                <p class="text-muted mb-4">
+                    Have a question, feedback, or a bulk order inquiry? We'd love to hear from you!
+                </p>
+
+                <div class="contact-info-list">
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="bi bi-geo-alt-fill"></i>
+                        </div>
+                        <div>
+                            <h6>Our Address</h6>
+                            <p>Janatha Syrup Manufacturing Co.<br>Industrial Area, Tamil Nadu, India</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="bi bi-telephone-fill"></i>
+                        </div>
+                        <div>
+                            <h6>Phone</h6>
+                            <p>+91 9566611866</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="bi bi-envelope-fill"></i>
+                        </div>
+                        <div>
+                            <h6>Email</h6>
+                            <p>info@janatasyrup.com<br>orders@janatasyrup.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="bi bi-clock-fill"></i>
+                        </div>
+                        <div>
+                            <h6>Business Hours</h6>
+                            <p>Mon - Sat: 9:00 AM - 6:00 PM<br>Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social-links mt-4">
+                    <a href="https://www.facebook.com/Janathasyrupofficial/" target="_blank" rel="noopener noreferrer" class="social-link" title="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/janathasyrup/?hl=en" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="https://wa.me/919566611866" target="_blank" rel="noopener noreferrer" class="social-link" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="col-lg-7" data-animate="fade-left">
+                <div class="contact-form-card">
+                    <h4 class="mb-4">Send Us a Message</h4>
+                    <form method="POST" id="contactForm">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Your Name *</label>
+                                {{ form.name }}
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Email Address *</label>
+                                {{ form.email }}
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Phone Number</label>
+                                {{ form.phone }}
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Subject *</label>
+                                {{ form.subject }}
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Message *</label>
+                                {{ form.message }}
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary-janatha btn-lg">
+                                    <i class="bi bi-send-fill me-2"></i>Send Message
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
