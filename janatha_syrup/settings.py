@@ -75,25 +75,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'janatha_syrup.wsgi.application'
 
-# Database Configuration
-# Uses Supabase PostgreSQL when DATABASE_URL is set in environment,
-# otherwise falls back to local SQLite for development.
-DATABASE_URL = os.environ.get('DATABASE_URL')
-if DATABASE_URL:
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=DATABASE_URL,
-            conn_max_age=600,
-            conn_health_checks=True,
-        )
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+# Database Configuration (Supabase PostgreSQL)
+SUPABASE_DB_URL = 'postgresql://postgres:mybdys-xezHah-4xytky@db.lovudfobbnfgdaadpndl.supabase.co:5432/postgres'
+DATABASE_URL = os.environ.get('DATABASE_URL', SUPABASE_DB_URL)
+
+DATABASES = {
+    'default': dj_database_url.parse(
+        DATABASE_URL,
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
+}
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
