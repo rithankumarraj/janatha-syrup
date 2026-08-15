@@ -75,8 +75,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'janatha_syrup.wsgi.application'
 
-# Database Configuration (Supabase PostgreSQL)
-SUPABASE_DB_URL = 'postgresql://postgres:mybdys-xezHah-4xytky@db.lovudfobbnfgdaadpndl.supabase.co:5432/postgres'
+# Database Configuration (Supabase PostgreSQL via Connection Pooler for Vercel IPv4)
+SUPABASE_DB_URL = 'postgresql://postgres.lovudfobbnfgdaadpndl:mybdys-xezHah-4xytky@aws-0-ap-southeast-2.pooler.supabase.com:6543/postgres?sslmode=require'
 DATABASE_URL = os.environ.get('DATABASE_URL', SUPABASE_DB_URL)
 
 DATABASES = {
@@ -86,6 +86,7 @@ DATABASES = {
         conn_health_checks=True,
     )
 }
+
 
 
 # Password validation
