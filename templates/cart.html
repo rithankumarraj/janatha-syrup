@@ -42,11 +42,7 @@
                                 <td>
                                     <div class="cart-product d-flex align-items-center gap-3">
                                         <div class="cart-product-image">
-                                            {% if item.product.image %}
-                                            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
-                                            {% else %}
-                                            <img src="{% static 'images/products/nannari-hero.png' %}" alt="{{ item.product.name }}">
-                                            {% endif %}
+                                            <img src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
                                         </div>
                                         <div>
                                             <h6 class="mb-0">

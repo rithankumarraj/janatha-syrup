@@ -88,8 +88,39 @@ class Product(models.Model):
         return 0
 
     @property
+    def image_url(self):
+        """Return a reliable image URL mapped to static assets on serverless environments."""
+        import os
+        from django.conf import settings
+        if self.image:
+            filename = os.path.basename(self.image.name)
+            static_file = settings.BASE_DIR / 'static' / 'images' / 'products' / filename
+            if static_file.exists():
+                return f"{settings.STATIC_URL}images/products/{filename}"
+            clean_name = filename.replace('_', ' ')
+            static_file_clean = settings.BASE_DIR / 'static' / 'images' / 'products' / clean_name
+            if static_file_clean.exists():
+                return f"{settings.STATIC_URL}images/products/{clean_name}"
+            return self.image.url
+        return f"{settings.STATIC_URL}images/logo.png"
+
+    @property
+    def secondary_image_url(self):
+        """Return a reliable secondary image URL."""
+        import os
+        from django.conf import settings
+        if self.secondary_image:
+            filename = os.path.basename(self.secondary_image.name)
+            static_file = settings.BASE_DIR / 'static' / 'images' / 'products' / filename
+            if static_file.exists():
+                return f"{settings.STATIC_URL}images/products/{filename}"
+            return self.secondary_image.url
+        return None
+
+    @property
     def review_count(self):
         return self.reviews.count()
+
 
 
 class Review(models.Model):

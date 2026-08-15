@@ -184,13 +184,9 @@
                         {% endif %}
 
                         <a href="{{ product.get_absolute_url }}" class="product-image-link">
-                            {% if product.image %}
-                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image primary-image">
-                            {% else %}
-                            <img src="{% static 'images/products/nannari-hero.png' %}" alt="{{ product.name }}" class="product-image primary-image">
-                            {% endif %}
+                            <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-image primary-image">
                             {% if product.secondary_image %}
-                            <img src="{{ product.secondary_image.url }}" alt="{{ product.name }}" class="product-image secondary-image">
+                            <img src="{{ product.secondary_image_url }}" alt="{{ product.name }}" class="product-image secondary-image">
                             {% endif %}
                         </a>
                     </div>

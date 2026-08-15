@@ -30,11 +30,7 @@
                     {% if product.discount_percentage > 0 %}
                     <span class="product-badge badge-sale badge-lg">-{{ product.discount_percentage }}% OFF</span>
                     {% endif %}
-                    {% if product.image %}
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid rounded-4" id="mainProductImage">
-                    {% else %}
-                    <img src="{% static 'images/products/nannari-hero.png' %}" alt="{{ product.name }}" class="img-fluid rounded-4" id="mainProductImage">
-                    {% endif %}
+                    <img src="{{ product.image_url }}" alt="{{ product.name }}" class="img-fluid rounded-4" id="mainProductImage">
                 </div>
             </div>
 
