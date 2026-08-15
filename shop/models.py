@@ -90,30 +90,46 @@ class Product(models.Model):
     @property
     def image_url(self):
         """Return a reliable image URL mapped to static assets on serverless environments."""
-        import os
         from django.conf import settings
-        if self.image:
-            filename = os.path.basename(self.image.name)
-            static_file = settings.BASE_DIR / 'static' / 'images' / 'products' / filename
-            if static_file.exists():
+        mapping = {
+            'ice': 'ICECREAM_SYRUP.png',
+            'grape': 'GRAPE_CRUSH.png',
+            'pineapple': 'PINEAPPLE_CRUSH.png',
+            'orange': 'ORANGE_CRUSH.png',
+            'mango': 'mango_crush.png',
+            'rose': 'rose_syrup.png',
+            'sarasaparilla': 'SARASAPARILLA SYRUP.png',
+            'nannari': 'Janatha Nannari Syrup Image.png',
+        }
+        slug_lower = (self.slug or '').lower()
+        name_lower = (self.name or '').lower()
+        for key, filename in mapping.items():
+            if key in slug_lower or key in name_lower:
                 return f"{settings.STATIC_URL}images/products/{filename}"
-            clean_name = filename.replace('_', ' ')
-            static_file_clean = settings.BASE_DIR / 'static' / 'images' / 'products' / clean_name
-            if static_file_clean.exists():
-                return f"{settings.STATIC_URL}images/products/{clean_name}"
+        if self.image:
             return self.image.url
         return f"{settings.STATIC_URL}images/logo.png"
 
     @property
     def secondary_image_url(self):
         """Return a reliable secondary image URL."""
-        import os
         from django.conf import settings
-        if self.secondary_image:
-            filename = os.path.basename(self.secondary_image.name)
-            static_file = settings.BASE_DIR / 'static' / 'images' / 'products' / filename
-            if static_file.exists():
+        mapping = {
+            'ice': 'ICECREAM_SYRUP.png',
+            'grape': 'GRAPE_CRUSH.png',
+            'pineapple': 'PINEAPPLE_CRUSH.png',
+            'orange': 'ORANGE_CRUSH.png',
+            'mango': 'mango_crush.png',
+            'rose': 'rose.png',
+            'sarasaparilla': 'sarasaparilla.png',
+            'nannari': 'nannari-hero.png',
+        }
+        slug_lower = (self.slug or '').lower()
+        name_lower = (self.name or '').lower()
+        for key, filename in mapping.items():
+            if key in slug_lower or key in name_lower:
                 return f"{settings.STATIC_URL}images/products/{filename}"
+        if self.secondary_image:
             return self.secondary_image.url
         return None
 
