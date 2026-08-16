@@ -92,14 +92,14 @@ class Product(models.Model):
         """Return a reliable image URL mapped to static assets on serverless environments."""
         from django.conf import settings
         mapping = {
-            'ice': 'ICECREAM_SYRUP.png',
-            'grape': 'GRAPE_CRUSH.png',
-            'pineapple': 'PINEAPPLE_CRUSH.png',
-            'orange': 'ORANGE_CRUSH.png',
-            'mango': 'mango_crush.png',
-            'rose': 'rose_syrup.png',
-            'sarasaparilla': 'SARASAPARILLA SYRUP.png',
-            'nannari': 'Janatha Nannari Syrup Image.png',
+            'ice': 'icecream-syrup.png',
+            'grape': 'grape-crush.png',
+            'pineapple': 'pineapple-crush.png',
+            'orange': 'orange-crush.png',
+            'mango': 'mango-crush.png',
+            'rose': 'rose-syrup.png',
+            'sarasaparilla': 'sarasaparilla-syrup.png',
+            'nannari': 'nannari-syrup.png',
         }
         slug_lower = (self.slug or '').lower()
         name_lower = (self.name or '').lower()
@@ -115,14 +115,14 @@ class Product(models.Model):
         """Return a reliable secondary image URL."""
         from django.conf import settings
         mapping = {
-            'ice': 'ICECREAM_SYRUP.png',
-            'grape': 'GRAPE_CRUSH.png',
-            'pineapple': 'PINEAPPLE_CRUSH.png',
-            'orange': 'ORANGE_CRUSH.png',
-            'mango': 'mango_crush.png',
-            'rose': 'rose.png',
-            'sarasaparilla': 'sarasaparilla.png',
-            'nannari': 'nannari-hero.png',
+            'ice': 'icecream-syrup.png',
+            'grape': 'grape-crush.png',
+            'pineapple': 'pineapple-crush.png',
+            'orange': 'orange-crush.png',
+            'mango': 'mango-crush.png',
+            'rose': 'rose-secondary.png',
+            'sarasaparilla': 'sarasaparilla-secondary.png',
+            'nannari': 'nannari-secondary.png',
         }
         slug_lower = (self.slug or '').lower()
         name_lower = (self.name or '').lower()
